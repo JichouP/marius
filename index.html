@@ -4,17 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <style type="text/css">
     p#s {font-family: "ＭＳ Ｐゴシック",sans-serif; }
   </style>
   <title>「マ」「リ」「ウ」「ス」をランダムに出力して「マリウス」が完成したら中指を立てるJavaScript</title>
 </head>
 <body>
-  <h1>「マ」「リ」「ウ」「ス」をランダムに出力して「マリウス」が完成したら中指を立てるJavaScript</h1>
-  <input id="ma" type="button" value="リセット" onClick="location.reload()">
-  <button id="ri" onClick="this.disabled = true">スタート</button>
-  <p id="u">ここに結果が表示されるよ！</p>
-  <p id="s"></p>
+  <div class="container">
+    <h1 class="jumbotron">「マ」「リ」「ウ」「ス」をランダムに出力して「マリウス」が完成したら中指を立てるJavaScript</h1>
+    <input class="btn btn-lg" id="ma" type="button" value="リセット" onClick="location.reload()">
+    <button class="btn btn-success btn-lg" id="ri" onClick="this.disabled = true">スタート</button>
+    <p id="u">ここに結果が表示されるよ！</p>
+    <p id="s"></p>
+  </div>
   <script>
     const marius = ['マ', 'リ', 'ウ', 'ス'];
     const aa = '\
