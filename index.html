@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style type="text/css">
+    p#s {font-family: "ＭＳ Ｐゴシック",sans-serif; }
+  </style>
+  <title>「マ」「リ」「ウ」「ス」をランダムに出力して「マリウス」が完成したら中指を立てるJavaScript</title>
+</head>
+<body>
+  <h1>「マ」「リ」「ウ」「ス」をランダムに出力して「マリウス」が完成したら中指を立てるJavaScript</h1>
+  <input id="ma" type="button" value="リセット" onClick="location.reload()">
+  <button id="ri">スタート</button>
+  <p id="u">ここに結果が表示されるよ！</p>
+  <p id="s"></p>
+  <script>
+    const marius = ['マ', 'リ', 'ウ', 'ス'];
+    const aa = '\
+    　　　　　　　　　　　　　　　　　　　　　　　　　　 　 　 　 　 　 　 　 　 　 /⌒＼　　　　 　 ／⌒ﾏ<br>\
+    　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 　 　 |　　 　＼＿＿／ 　 　 |<br>\
+    　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 　 　 |　 　 ＿[＿＿]＿　　　|<br>\
+    　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 ＼／　　　　 　 　 ＼／<br>\
+    　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 　 　 　 　 　 　 ／　　　 　 　 　 　 　 ＼<br>\
+    　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 　 　 / 　 　 /|　 　 　 |＼　　　 _<br>\
+    　　　　　　　　　　　　　　　　　　　　　　　　 　 　 　 　 　 　 　 　 　 /　　＿/-|＿＿＿|―|＿　　_<br>\
+    　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 |　　|　／⌒Y 　 ／⌒Y　|　　|<br>\
+    　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 |　　|　 ん(__　　　ん(__ 　|　　|<br>\
+    　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 |　　|　 ヒzノ　　　ヒzノ 　|　　|<br>\
+    　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 |　　|　　 　 (_人_）　　 　 |　　|<br>\
+    　　　　　　　　＿＿／￣￣￣￣￣＼＿＿　　　　　 　 　 　 ｌ⌒ｌ　 |　　|　　　　　　　　 　 　 |　　|<br>\
+    　　　　　　 ／人／　　／　　　 ＼　　＼人＼　　 　 　 　 　 |　 |　 |　　|　　　　　　　　 　 　 |　　|ｌ⌒l<br>\
+    　　　 　 ｌ⌒l (_/　　　⌒　　　 　 ⌒　　　＼)ｌ⌒l　　　　　 　 |　 |　 |　　|　　　　　　　　 　 　 |　　||　 |<br>\
+    　　　 ／|　 | /　　 ／|／＼＿／＼|＼|　　 ||　 |＼　　 　 　 |　 |　 |　　〕 　 　 　 　 　 　 　 〔　　||　 |<br>\
+    .　　 〈＿|　 |_|　　 | ／⌒Y　　／⌒Y　|　　 ||　 |＿〉　　 /⌒|　 |⌒Y⌒l人　　　　　　　　　人　　||　 |<br>\
+    　　　 　 |　 | |　　 |　ん(__　　　ん(__　 |　　 ||　 |　　 　 /〈　〈 　 〉　　　|　 ＼＿＿＿＿／/⌒ﾞ⌒|　 |⌒l<br>\
+    .　　 /⌒|　 |⌒Y⌒l 乂_ツ　、 乂_ツ/⌒Y⌒|　 |⌒l　　{　　　}　 {　　　/＼　 ＼＿＿／　 |　 　 〔　　〉　|＼<br>\
+    　　/〈　〈 　 〉　　　|　　　(_人_）　 　|　　 　〔　　〉　|　　＼　　　　　　/　　 ＼＿＿]＿＿_人　 　 ｝　｛　 |　 )<br>\
+    .　 {　　　}　 {　　　/＞―┬―┬― ∨　 　 ｝　｛　 |　　　 ＼＿＿__/|　　　　　 └ウ |　　　 ＼　　 　 　 ／<br>\
+    　　＼　　　　　　/　＼　　＼／　　／∨　　　　　 /　　 　 　 ＼＿／　　 　 　 　 〈＿| 　 　 　 |＼＿＿/<br>\
+    　　　 ＼＿＿__/|　 　 ＼＿]＿_／　　|＼＿＿__/　　　　　　　└――|　 　 　 　 　 　 　 　 　 ＼＿＿|<br>\
+    　　　 　 ＼＿_／ | 　 　 └ウ |　　　　＼＿＿／　　　　　　　 　 　 　 |　　　　　　　　　　　　　|――┘<br>\
+    　 　 　 　 └――|　　　　 〈＿|　　　　 |――┘　　　　　　　　　 ＿_／￣￣￣￣￣￣￣￣￣＼＿<br>\
+    　　　　　　　＿_／￣￣￣￣￣￣￣￣＼＿　　　 　 　 　 　 　 (　　　／　　|　　　　　　|　　＼　　　)<br>\
+    　　　　　　 (　　　／　　|　　　　　|　　＼　　 )　　　 　 　 　 　 　 ＼＿＿＿＿＿＿＿＿＿＿＿_／<br>\
+    　　　　　　　＼＿＿＿＿＿＿＿＿＿＿_／　　　　　　　　　　　　　　　|　 |　　　　　　 　 |　 |<br>\
+    　　　　　　　　　　_|―|　　　　　　 |―|_　　　　　　　　　　 　 　 　 　 　 _|￣|　　　　　　 　 |￣|_<br>\
+    　　　　 　 　 　 └―┘　　 　 　 └─┘　　　　　　　　　　　　 　 　 └―┘　　 　 　 　 └─┘<br>\
+    happy end!!\n\
+    ';
+    
+    function u(){
+      const u = document.getElementById('u');
+      u.textContent = '';
+      const s = document.getElementById('s')
+      s.textContent = '';
+      const ma = setInterval(function(){
+        u.textContent += marius[ri(0, 3)];;
+        if(u.textContent.endsWith('マリウス')){
+          clearInterval(ma);
+          s.innerHTML = aa;
+        }
+      }, 10);
+    }
+
+    const ri = (min, max) => Math.floor( Math.random() * (max - min + 1) ) + min;
+
+    document.getElementById('ri').addEventListener('click', u);
+  </script>
+</body>
+</html>
